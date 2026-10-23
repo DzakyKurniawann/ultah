@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* Tailwind v4: token desain didefinisikan di CSS (tidak ada tailwind.config.js lagi) */
+@theme {
+  --color-bg: #1A1216;
+  --color-surface: #261A21;
+  --color-surface-2: #33232C;
+  --color-pink-soft: #F4B6C2;
+  --color-pink-blush: #FFD9E0;
+  --color-cream: #FFF8F5;
+  --color-rose-gold: #E8A9A0;
+  --color-sea: #8EC5D1;
+  --color-text2: rgba(255, 248, 245, .7);
+  --color-line: rgba(232, 169, 160, .2);
+
+  --font-display: Fraunces, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-hand: Caveat, cursive;
+}
+
+:root {
+  --bg: #1A1216;
+  --surface: #261A21;
+  --surface-2: #33232C;
+  --pink-soft: #F4B6C2;
+  --pink-blush: #FFD9E0;
+  --cream: #FFF8F5;
+  --rose-gold: #E8A9A0;
+  --sea: #8EC5D1;
+  --text-2: rgba(255, 248, 245, .7);
+  --line: rgba(232, 169, 160, .2);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body, #root { margin: 0; height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: normal;
+  -webkit-text-size-adjust: 100%;
+}
+button { font-family: inherit; cursor: pointer; }
+button:active, .card:active, .tab:active { transform: scale(.97); }
+.card { transition: transform .3s ease-out; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* keyframes dari desain */
+.num { animation: br 5s ease-in-out infinite; }
+.spin { animation: sp 24s linear infinite; }
+.rise { animation: ri .6s ease-out both; }
+@keyframes br { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+@keyframes sp { to { transform: rotate(360deg); } }
+@keyframes ri { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .num, .spin, .rise { animation: none; }
+}
+
+/* ---- Gerbang (01-gerbang) ---- */
+.star { position: absolute; background: #FFF8F5; border-radius: 50%; opacity: .2; animation: tw 3.4s ease-in-out infinite; }
+.glow {
+  position: absolute; inset: -20%;
+  background: radial-gradient(circle at 30% 25%, rgba(244,182,194,.16), transparent 55%), radial-gradient(circle at 75% 80%, rgba(244,182,194,.12), transparent 50%);
+  animation: drift 16s ease-in-out infinite alternate;
+}
+.pin.shake { animation: shk .45s ease-out; }
+.bloom {
+  position: absolute; left: 50%; top: 50%; width: 140px; height: 140px; margin: -70px 0 0 -70px; border-radius: 50%;
+  background: radial-gradient(circle, #FFD9E0 0%, #F4B6C2 45%, rgba(244,182,194,0) 70%);
+  animation: bl 1.8s ease-in forwards;
+}
+.fadein { opacity: 0; animation: fi .6s ease-out 1.1s forwards; }
+@keyframes tw { 0%, 100% { opacity: .15; transform: scale(.8); } 50% { opacity: .9; transform: scale(1.15); } }
+@keyframes drift { from { transform: translate(-3%,-2%) scale(1); } to { transform: translate(3%,4%) scale(1.1); } }
+@keyframes shk { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-8px); } 40% { transform: translateX(7px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(3px); } }
+@keyframes bl { from { transform: scale(.2); opacity: .2; } to { transform: scale(12); opacity: 1; } }
+@keyframes fi { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .star, .glow, .pin.shake, .bloom { animation: none; }
+  .star { opacity: .5; }
+  .bloom { transform: scale(12); }
+  .fadein { animation: none; opacity: 1; }
+}
+
+/* ---- Album (03-05) ---- */
+.hint { animation: hi .6s ease-out 3.5s forwards; }
+@keyframes hi { to { opacity: 0; } }
+/* equalizer: desain menganimasikan height; di sini diganti scaleY (hanya transform) */
+.bar { display: block; width: 3px; height: 16px; border-radius: 2px; background: #F4B6C2; transform-origin: bottom; animation: eqb 1s ease-in-out infinite; }
+.bar2 { animation-delay: .25s; }
+.bar3 { animation-delay: .5s; }
+@keyframes eqb { 0%, 100% { transform: scaleY(.31); } 50% { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .hint { animation: none; }
+  .bar { animation: none; transform: scaleY(.75); }
+}
