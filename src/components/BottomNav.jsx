@@ -17,7 +17,7 @@ export default function BottomNav() {
             to={r.path}
             end={r.path === '/'}
             className={({ isActive }) =>
-              `tab flex min-h-[52px] flex-1 flex-col items-center justify-center gap-0.5 text-[13px] no-underline ${
+              `tab flex min-h-13 flex-1 flex-col items-center justify-center gap-0.5 text-[13px] no-underline ${
                 isActive ? 'text-pink-soft' : 'text-text2'
               }`
             }

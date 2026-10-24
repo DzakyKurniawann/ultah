@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import content from '../content.js'
 import { hariBersama, kunciSapaan, tanggalPanjang } from '../lib/tanggal.js'
+import FotoLazy from '../components/FotoLazy.jsx'
 
 const tunda = (s) => ({ animationDelay: `${s}s` })
 
@@ -59,7 +60,7 @@ export default function Beranda() {
               style={{ flex: '0 0 140px', scrollSnapAlign: 'start', display: 'block', color: 'inherit', textDecoration: 'none', textAlign: 'left' }}
             >
               {foto ? (
-                <img src={foto} alt="" width="140" height="140" loading="lazy" decoding="async" style={{ display: 'block', width: 140, height: 140, borderRadius: 16, objectFit: 'cover' }} />
+                <FotoLazy src={foto} alt="" style={{ width: 140, height: 140, borderRadius: 16 }} fallback={`linear-gradient(145deg,${a.gradien[0]},${a.gradien[1]})`} />
               ) : (
                 <div
                   style={{

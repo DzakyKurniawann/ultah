@@ -3,9 +3,9 @@
 // Komponen tidak boleh menulis teks/angka konten secara langsung.
 // ============================================================
 
-const nama = 'Nadira'
-const namaPengirim = 'Raka'
-const tanggalJadian = '2023-10-23' // format YYYY-MM-DD
+const nama = 'Indri'
+const namaPengirim = 'Dzaky'
+const tanggalJadian = '2023-10-04' // format YYYY-MM-DD
 const usia = 19
 
 // kode gerbang = DDMMYY dari tanggalJadian
@@ -43,7 +43,8 @@ const content = {
   namaPengirim,
   tanggalJadian,
   usia,
-  nomorTelepon: '+6281234567890', // dummy
+  nomorTelepon: '+6285198604023', // dummy
+  linkWhatsApp: 'https://wa.me/message/PILIZVAAOZIGN1',
   kodeGerbang: hitungKode(tanggalJadian),
 
   gerbang: {
@@ -58,7 +59,7 @@ const content = {
       'Hampir… coba tanya hatimu, bukan kalender.',
     ],
     sambutan: `Selamat datang, ${nama}`,
-    sambutanKecil: 'Sebentar ya, kami buka lagunya…',
+    sambutanKecil: 'Sebentar ya sayang...',
   },
 
   beranda: {
@@ -79,21 +80,42 @@ const content = {
     judulPenekanan: 'kita',
     subjudul: 'lima rasa, satu cerita: kita',
     tanpaJudul: 'Yang belum sempat diberi judul',
+    jumlahKenangan: 'kenangan',
+    mulaiPutar: 'Putar kenangan',
+    kenanganAwal: 'Kenangan pertama',
   },
 
   foto: {
     sambung: 'dari',
     petunjuk: 'geser ke kiri atau kanan',
+    placeholder: '[foto]',
+  },
+
+  kenanganDiputar: {
+    petunjuk: 'ketuk sisi kiri/kanan atau geser untuk kenangan lain',
+    ceritaKosong: 'Cerita untuk kenangan ini akan diisi nanti.',
+    captionKosong: 'kenangan kita',
   },
 
   lagu: {
     judul: 'Komang',
     artis: 'Raim Laode',
+    foto: null,
     barisPemutar: [
       'Ini lagu kita, dan akan selalu begitu.',
       'Setiap kali diputar, aku ingat kamu.',
       'Pejamkan mata. Kita masih di tepi laut itu.',
     ],
+  },
+
+  pemutar: {
+    judul: 'Sedang diputar',
+    placeholderFoto: 'foto\nkita',
+    tambahFavorit: 'Tambah ke favorit',
+    hapusFavorit: 'Hapus dari favorit',
+    ulangi: 'Putar ulang dari awal',
+    maju30: 'Maju 30 detik',
+    audioTidakTersedia: 'Lagu belum dapat diputar. Periksa file komang.mp3 di folder public.',
   },
 
   // urutan mengikuti carousel Beranda (02). gradien = [awal, akhir]
@@ -119,6 +141,14 @@ const content = {
   surat: {
     keterangan: 'ditulis tangan, hanya untukmu',
     judul: `Untuk ${nama}, di hari ke-${usia}-mu`,
+    bacaSurat: 'Baca suratnya',
+    akhiriSurat: 'Akhiri surat',
+    bacaLagi: 'Baca lagi',
+    lanjutKejutan: 'Lanjut ke Kejutan',
+    akhir: {
+      judul: 'Selamat ulang tahun, sayangku.',
+      cerita: 'Terima kasih sudah jadi rumah untuk semua ceritaku.',
+    },
     // array bait; tiap bait = array baris (jeda antar bait di mode lirik)
     bait: [
       [`${nama},`, 'Hari ini usiamu sembilan belas.', 'Dari semua hal besar yang bisa terjadi dalam hidupku,', 'yang paling kusyukuri justru yang paling sederhana:', 'kamu yang tersenyum saat aku bercerita, bahkan ketika ceritanya tidak penting.'],
@@ -131,7 +161,13 @@ const content = {
   },
 
   bukaSaat: {
+    judul: 'Buka saat…',
     pengantar: 'Surat kecil untuk setiap perasaanmu. Ketuk satu amplop untuk membukanya.',
+    ketukUntukMembuka: 'Ketuk untuk membuka surat',
+    geserPetunjuk: 'Geser untuk surat berikutnya',
+    teleponLabel: `Telepon ${namaPengirim}`,
+    suratSebelumnya: 'Surat sebelumnya',
+    suratBerikutnya: 'Surat berikutnya',
     amplop: [
       { id: 'kangen', label: 'Buka saat kamu kangen',
         teks: 'Kangen itu tanda bahwa yang kita punya itu nyata. Pejamkan mata, putar lagu kita, dan ingat: aku sedang menghitung hari untuk bertemu.',
@@ -159,7 +195,23 @@ const content = {
     penutupKecil: 'Halaman kosong ini milik kita berdua.',
   },
 
+  kejutan: {
+    judul: 'Kejutan kecil',
+    subjudul: 'tiga hal yang kusimpan untukmu',
+    kartu: [
+      { judul: 'Kue untukmu', deskripsi: 'Satu permintaan, satu lilin untuk ditiup.', rute: '/kejutan/kue' },
+      { judul: 'Buka saat…', deskripsi: 'Ada surat kecil untuk beberapa hari yang berbeda.', rute: '/kejutan/buka-saat' },
+      { judul: 'Tiga tahun kita', deskripsi: 'Potongan perjalanan yang sudah kita lewati.', rute: '/kejutan/tiga-tahun' },
+    ],
+  },
+
   kue: {
+    instruksi: 'Pejamkan mata, buat satu permintaan, lalu tiup lilinnya.',
+    petunjuk: 'boleh ditiup beneran ke mikrofon, boleh juga diketuk',
+    tombolTiup: 'Tiup lilinnya',
+    tombolMikrofon: 'Aktifkan tiupan (opsional)',
+    tombolSimpan: 'Simpan di hati',
+    tombolUlang: 'Tiup lagi',
     pesan: {
       pembuka: `Selamat ulang tahun, ${nama}. Permintaanmu sudah kucatat.`,
       penekanan: 'Sebagian akan kuwujudkan, sebagian lagi kita wujudkan berdua.',
@@ -171,6 +223,9 @@ const content = {
     judul: 'Selamat ulang tahun, sayang.',
     baris: 'Ini baru satu lagu dari banyak lagu kita.',
     tandaTangan: `— ${namaPengirim}`,
+    memutar: 'Memutar Komang…',
+    dijeda: 'Komang sedang dijeda',
+    putarUlang: 'Putar ulang dari awal',
   },
 }
 

@@ -8,6 +8,7 @@ export const RUTE = [
   { path: '/foto', label: 'Foto', tab: false, showMini: false, showNav: false },
   { path: '/kenangan', label: 'Kenangan', tab: false, showMini: false, showNav: false },
   { path: '/pemutar', label: 'Pemutar', tab: false, showMini: false, showNav: false },
+  { path: '/penutup', label: 'Penutup', tab: false, showMini: false, showNav: false },
 ]
 
 export function cariRute(pathname) {

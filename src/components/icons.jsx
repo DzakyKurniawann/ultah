@@ -28,5 +28,16 @@ export const IkonPause = ({ size = 20, ...p }) => (
 export const IkonKembali = (p) => (
   <svg width="24" height="24" {...dasar} {...garis} {...p}><path d="M15 5l-7 7 7 7" /></svg>
 )
+export const IkonSebelumnya = (p) => (
+  <svg width="24" height="24" {...dasar} {...garis} {...p}><path d="M11 5L4 12l7 7M20 5v14" /></svg>
+)
+export const IkonBerikutnya = (p) => (
+  <svg width="24" height="24" {...dasar} {...garis} {...p}><path d="M13 5l7 7-7 7M4 5v14" /></svg>
+)
+export const IkonUlangi = (p) => (
+  <svg width="22" height="22" {...dasar} {...garis} {...p}>
+    <path d="M3 11a8 8 0 0 1 14-5l2 2M19 3v5h-5M21 13a8 8 0 0 1-14 5l-2-2M5 21v-5h5" />
+  </svg>
+)
 
 export const IKON_TAB = { beranda: IkonBeranda, album: IkonAlbum, surat: IkonSurat, kejutan: IkonKejutan }

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import content from '../content.js'
-import { useAudio } from '../lib/AudioProvider.jsx'
+import { useAudio } from '../lib/AudioContext.js'
 import { sudahLolos, tandaiLolos } from '../lib/gerbang.js'
 
 // rumus bintang dari script 01-gerbang
